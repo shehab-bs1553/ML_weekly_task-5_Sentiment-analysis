@@ -1,6 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
 import string
+from autocorrect import Speller
 
 def option():
     option = input("\nEnter 1 for analysis from input.txt\nEnter 2 for analysis from user input\n\nYour option: ")
@@ -17,6 +18,8 @@ def option():
 def preprocessing(tweet):
     tweet = tweet.lower()
     tweet = tweet.translate(str.maketrans('', '', string.punctuation))
+    spell = Speller()
+    tweet = ' '.join([spell(word) for word in tweet.split()])
     return tweet
 
 def model_train(tweet):
@@ -39,15 +42,17 @@ def model_train(tweet):
 
     encoded_tweet = tokenizer(tweet_processed, return_tensors='pt')
     output = model(**encoded_tweet)
-    print(output[0][0])
+    # print(output[0][0])
     scores = softmax(output[0][0].detach().numpy())
     return scores
-    
+
+
+   
 def main():
     
     tweet = preprocessing(option())
     labels = ["positive", "neutral", "negative"]
-    scores =model_train(tweet)
+    scores = model_train(tweet)
     label_scores = list(zip(labels, scores))
     label_scores.sort(key=lambda x: x[1], reverse=True)
 
