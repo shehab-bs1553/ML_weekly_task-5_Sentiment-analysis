@@ -5,7 +5,7 @@ import string
 def option():
     option = input("\nEnter 1 for analysis from input.txt\nEnter 2 for analysis from user input\n\nYour option: ")
     if option == '1':
-        tweet = open("sentiment_analysis/input.txt").read()
+        tweet = open("input.txt").read()
         return tweet
     elif option == '2':
         tweet = input("\nEnter your tweet: ")
