@@ -5,7 +5,7 @@ import string
 def option():
     option = input("\nEnter 1 for analysis from input.txt\nEnter 2 for analysis from user input\n\nYour option: ")
     if option == '1':
-        tweet = open("input.txt").read()
+        tweet = open("sentiment_analysis\input.txt").read()
         return tweet
     elif option == '2':
         tweet = input("\nEnter your tweet: ")
@@ -39,7 +39,7 @@ def model_train(tweet):
 
     encoded_tweet = tokenizer(tweet_processed, return_tensors='pt')
     output = model(**encoded_tweet)
-
+    print(output[0][0])
     scores = softmax(output[0][0].detach().numpy())
     return scores
     
