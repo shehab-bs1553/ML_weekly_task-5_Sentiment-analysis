@@ -36,17 +36,17 @@ def preprocessing(tweet):
     
     return tweet_processed
 
-def model_train(tweet):
-    model_name = "lxyuan/distilbert-base-multilingual-cased-sentiments-student"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
-
+def model_train(tweet, tokenizer, model):
     encoded_tweet = tokenizer(tweet, return_tensors='pt')
     output = model(**encoded_tweet)
     scores = softmax(output[0][0].detach().numpy())
     return scores
 
 def main():
+    model_name = "lxyuan/distilbert-base-multilingual-cased-sentiments-student"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    
     while True:
         tweet, option_selected = option()
         if option_selected == 'q':
@@ -55,7 +55,7 @@ def main():
         elif option_selected in ['1', '2']:
             tweet = preprocessing(tweet)
             labels = ["positive", "neutral", "negative"]
-            scores = model_train(tweet)
+            scores = model_train(tweet, tokenizer, model)
             label_scores = list(zip(labels, scores))
             label_scores.sort(key=lambda x: x[1], reverse=True)
 
