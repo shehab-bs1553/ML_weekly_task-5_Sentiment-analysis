@@ -1,10 +1,18 @@
 ## Sentiment Analysis Using DistilBERT
 
 ## Project Description:
-#### This project performs sentiment analysis on text input using a pre-trained DistilBERT model from Hugging Face. 
-#### The model categorizes input text into three sentiment classes:
- positive,  neutral, and  negative.
-### The text can be input from a file or directly by the user.
+
+* #### This project performs sentiment analysis on text input using a pre-trained DistilBERT model from Hugging Face.
+  
+* #### The model categorizes input text into three sentiment classes:
+
+    * positive
+           
+    * neutral
+           
+    * negative.
+    
+* #### The text can be input from a file or directly by the user.
 
 ## Table of Contents
 
@@ -32,35 +40,36 @@ Clone the Repository:
                pip install nltk
 
 ## Usage
-### Run the main function to start the sentiment analysis. The script will prompt you to choose between analyzing text from a file or entering text directly.
+#### Run the main function to start the sentiment analysis.
+
+#### The script will prompt you to choose between analyzing text from a file or entering text directly.
 
       python sentiment_analysis/main.py
 
-## Option 1: Analyze Text from a File
-Place your text file named input.txt in the ML_weekly_task-5_Sentiment-analysis/sentiment_analysis/ directory.
+* #### Option 1: Analyze Text from a File
 
-#### Select option 1 when prompted.
+    Place your text file named input.txt in the ML_weekly_task-5_Sentiment-analysis/sentiment_analysis/ directory.
+    
+    Select option 1 when prompted. The code executes the text from the input.txt file.
 
-The code executes the text from the input.txt file.
+* #### Option 2: Select option 2 when prompted.
 
-#### Select option 2 when prompted.
+    Enter your text in the console.
 
-Enter your text in the console.
+* #### Quitting
 
-#### Quitting
-
-Enter q to quit the program.
+     Enter q to quit the program.
 
 
 ## Preprocessing Steps
 
-#### * Lowercasing: Converts all characters in the text to lowercase.
-
-#### * Punctuation Removal: Removes all punctuation from the text.
-
-#### * Spelling Correction: Correct spelling using the autocorrect library.
-
-#### * Stopword Removal: Removes common English stopwords using NLTK.
+  * #### Lowercasing: Converts all characters in the text to lowercase.
+ 
+  * #### Punctuation Removal: Removes all punctuation from the text.
+ 
+  * #### Spelling Correction: Correct spelling using the autocorrect library.
+ 
+  * #### Stopword Removal: Removes common English stopwords using NLTK.
 
 ## Model Details
 ## The model used is 
