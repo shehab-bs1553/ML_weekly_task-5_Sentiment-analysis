@@ -5,7 +5,6 @@ from autocorrect import Speller
 import nltk
 from nltk.corpus import stopwords
 
-# Download stop words
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
